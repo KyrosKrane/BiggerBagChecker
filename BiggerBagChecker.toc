@@ -1,0 +1,12 @@
+## Interface: 70300
+## Title: BiggerBagChecker
+## Notes: Tracks your progress for the "Going to Need a Bigger Bag" achievement.
+## Version: 1.0
+## Author: KyrosKrane Sylvanblade
+
+BiggerBagChecker.lua
+localization\enUS.lua
+localization\deDE.lua
+localization\frFR.lua
+localization\ruRU.lua
+localization\zhTW.lua 
