@@ -276,8 +276,9 @@ f:SetScript("OnEvent", function()
 		elseif npcID == mob["Sele'na"] then
 			-- Note that Overgrown Lilypad (the item) was changed to Wilted Lilypad when WoD launched. The criteria still states Overgrown Lilypad though.
 			addItem(L["Wilted Lilypad"],color["gray"],criteria["Overgrown Lilypad"],20)  -- 20%
-		elseif npcID == mob["Gulp Frog"] then
-			addItem(L["Wilted Lilypad"],color["gray"],criteria["Overgrown Lilypad"],1.2)  -- 1.2%
+		-- As per a GM note, the Wilited Lilypad only drops from Sele'na.
+		--elseif npcID == mob["Gulp Frog"] then
+		--	addItem(L["Wilted Lilypad"],color["gray"],criteria["Overgrown Lilypad"],1.2)  -- 1.2%
 		elseif npcID == mob["Nessos the Oracle"] then
 			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 18 )  	-- 18%
 		elseif npcID == mob["Great Turtle Furyshell"] then
