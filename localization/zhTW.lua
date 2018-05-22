@@ -65,7 +65,7 @@ if GetLocale() == "zhTW" then
 	---
 	["Crane Nest"] = "鶴巢",
 	["Eerie Crystal"] = "神秘的水晶",
-	["Sunken Treasure"] = "水下寶藏",
+	["Sunken Treasure"] = "沉没的宝箱",
 	["Timeless Chest"] = "永恆寶箱",
 	----
 	["missing"] = "缺少",
