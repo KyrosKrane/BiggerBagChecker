@@ -10,3 +10,4 @@ localization\deDE.lua
 localization\frFR.lua
 localization\ruRU.lua
 localization\zhTW.lua 
+localization\zhCN.lua 
