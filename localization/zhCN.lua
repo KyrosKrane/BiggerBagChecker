@@ -5,7 +5,7 @@ if GetLocale() == "zhCN" then
 {
 	["Going To Need A Bigger Bag"] = "需要一个大背包",
 	--
-	["Cursed Swabby Helmet" = "受诅咒的水手头盔",
+	["Cursed Swabby Helmet"] = "受诅咒的水手头盔",
 	["Warped Warning Sign"] = "扭曲的警告标志",
 	["Giant Purse of Timeless Coins"] = "一大包永恒铸币",
 	["Crystal of Insanity"] = "狂乱水晶",
