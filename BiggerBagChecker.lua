@@ -170,6 +170,10 @@ end
 
 
 local function addItem(item, itemcolor, criteriaNum, percent)
+	-- In rare cases, where a lot is happening in game, it's possible to get here without some of the parameters. I don't know how it happens in game.
+	-- So just in case, do some sanity checks on the passed in parameters, and just exit if they're invalid. This prevents a nasty in game error.
+	if not item or not itemcolor or not criteriaNum or not percent then return end
+
 	local Completed
 	_ , _ , Completed = GetAchievementCriteriaInfo(BiggerBagAchievementNum, criteriaNum);
 
