@@ -44,3 +44,4 @@ luac.out
 
 # Local extra files
 Extras/
+.release/
