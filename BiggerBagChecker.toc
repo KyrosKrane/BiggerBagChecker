@@ -1,4 +1,4 @@
-## Interface: 800
+## Interface: 80000
 ## Title: BiggerBagChecker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
