@@ -366,7 +366,7 @@ f:SetScript("OnEvent", function()
 		elseif npcID == mob["Death Adder"] then
 			addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2 )
 		elseif npcID == mob["Imperial Python"]  then
-			addItem(L["Death Adder Hatchling"], color["blue"], criteria["Death Adder Hatchling"], 3 )
+			addItem(L["Death Adder Hatchling"], color["green"], criteria["Death Adder Hatchling"], 3 )
 			addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2 )
 		elseif npcID == mob["Huolon"] then
 			addItem(L["Reins of the Thundering Onyx Cloud Serpent"], color["violet"], criteria["Reins of the Thundering Onyx Cloud Serpent"], 1 )
