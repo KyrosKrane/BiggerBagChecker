@@ -308,9 +308,7 @@ f:SetScript("OnEvent", function()
 			addItem(L["Ashen Stone"], color["blue"], criteria["Ashen Stone"], 0.9 )	-- 0.9%
 		elseif npcID == mob["Champion of the Black Flame"] then
 			addItem(L["Blackflame Daggers"], color["blue"], criteria["Blackflame Daggers"], 1.1 )		-- 1.1%
-			-- I don't know why this next item is in here. It's not lootable, and it's not one of the achievement criteria any more.
-			-- It was replaced by a new item with an identical name (minus the "old" bit) that drops from another mob.
-			-- addItem(L["Big Bag of Herbs (Old)"], color["gray"], -1, 1.9 ) -- 1.9%
+			addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 6.0 )	-- 6%
 		elseif npcID == mob["Blazebound Chanter"] then
 			addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 0.8 ) -- 0.8%
 			addItem(L["Blizzard Stone"], color["blue"], criteria["Blizzard Stone"], 0.4 )		--0.4%
