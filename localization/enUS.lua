@@ -67,6 +67,7 @@ updateLocale(
 	["Eerie Crystal"] = true,
 	["Sunken Treasure"] = true,
 	["Timeless Chest"] = true,
+	["Conspicuously Empty Shell"] = true,
 	---
 	["completed"] = "Done",
 	["missing"] = "Need",

@@ -67,6 +67,7 @@ if GetLocale() == "frFR" then
 	["Eerie Crystal"] = "Cristal sinistre",
 	["Sunken Treasure"] = "Trésor englouti",
 	["Timeless Chest"] = "Coffre intemporel",
+	["Conspicuously Empty Shell"] = true, -- @TODO: Get translation
 	---
 	["missing"] = "incomplet",
 	["completed"] = "terminé",

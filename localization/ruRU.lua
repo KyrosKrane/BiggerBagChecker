@@ -67,6 +67,7 @@ if GetLocale() == "ruRU" then
 	["Eerie Crystal"] = "Зловещий кристалл",
 	["Sunken Treasure"] = "Затонувшее сокровище",
 	["Timeless Chest"] = "Вневременный сундук",
+	["Conspicuously Empty Shell"] = true, -- @TODO: Get translation
 	----
 	["missing"] = "неполный",
 	["completed"] = "завершено: ",

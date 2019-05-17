@@ -211,7 +211,7 @@ local function checkObjects(...)
 			if text ~= nil then
 
 				-- determine what object was found.
-				if text == L["Crane Nest"] or text == L["Eerie Crystal"] or text == L["Sunken Treasure"] or text == L["Timeless Chest"] then
+				if text == L["Crane Nest"] or text == L["Eerie Crystal"] or text == L["Sunken Treasure"] or text == L["Timeless Chest"] or text == L["Conspicuously Empty Shell"] then
 					ObjectFound = text
 				end
 
@@ -220,6 +220,7 @@ local function checkObjects(...)
 					or	string.find(text, L["Crystal of Insanity"]) ~= nil
 					or	string.find(text, L["Cursed Swabby Helmet"]) ~= nil
 					or	string.find(text, L["Bonkers"]) ~= nil
+					or	string.find(text, L["Hardened Shell"]) ~= nil
 					then
 						LineFound = true
 						break -- we have an item and its line; no point continuing to loop.
@@ -242,6 +243,8 @@ local function checkObjects(...)
 			addItem(L["Cursed Swabby Helmet"],color["blue"],criteria["Cursed Swabby Helmet"],67)
 		elseif ObjectFound == L["Timeless Chest"] then
 			addItem(L["Bonkers"],color["blue"],criteria["Bonkers"],1.5)
+		elseif ObjectFound == L["Conspicuously Empty Shell"] then
+			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.7 )  	-- 1.7%
 		end -- check each item
 
 	end -- if need to add line
@@ -284,11 +287,11 @@ f:SetScript("OnEvent", function()
 		--elseif npcID == mob["Gulp Frog"] then
 		--	addItem(L["Wilted Lilypad"],color["gray"],criteria["Overgrown Lilypad"],1.2)  -- 1.2%
 		elseif npcID == mob["Nessos the Oracle"] then
-			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 18 )  	-- 18%
+			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 26 )  	-- 26%
 		elseif npcID == mob["Great Turtle Furyshell"] then
 			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.7 )  	-- 1.7%
 		elseif npcID == mob["Chelon"] then
-			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.6 )  	-- 1.6%
+			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.3 )  	-- 1.3%
 		elseif npcID == mob["Korda Torros"] then
 			addItem(L["Forager's Gloves"], color["blue"], criteria["Forager's Gloves"], 10 )		-- 10%
 		elseif npcID == mob["Burning Berserker"] then

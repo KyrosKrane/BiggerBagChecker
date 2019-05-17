@@ -67,6 +67,7 @@ if GetLocale() == "zhTW" then
 	["Eerie Crystal"] = "神秘的水晶",
 	["Sunken Treasure"] = "水下寶藏",
 	["Timeless Chest"] = "永恆寶箱",
+	["Conspicuously Empty Shell"] = true, -- @TODO: Get translation
 	----
 	["missing"] = "缺少",
 	["completed"] = "已完成",

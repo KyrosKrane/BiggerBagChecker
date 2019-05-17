@@ -67,6 +67,7 @@ if GetLocale() == "deDE" then
 	["Eerie Crystal"] = "Unheimlicher Kristall",
 	["Sunken Treasure"] = "Versunkener Schatz",
 	["Timeless Chest"] = "Zeitlose Truhe",
+	["Conspicuously Empty Shell"] = true, -- @TODO: Get translation
 	----
 	["missing"] = "fehlt",
 	--["completed"] = "Abgeschlossen: ",
