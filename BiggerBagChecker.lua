@@ -8,7 +8,7 @@
 --# Bail out on WoW Classic
 --#########################################
 
--- Mechagon doesn't exist on WoW Classic, so if a user runs this on Classic, just return at once.
+-- Timeless Isle doesn't exist on WoW Classic, so if a user runs this on Classic, just return at once.
 local IsClassic = select(4, GetBuildInfo()) < 20000
 if IsClassic then return end
 
