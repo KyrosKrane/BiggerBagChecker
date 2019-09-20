@@ -1,3 +1,22 @@
+-- BiggerBagChecker.lua
+-- Written by Zeatar (Setar1) on Curse and updated by KyrosKrane Sylvanblade (kyros@kyros.info)
+-- This file is in the public domain, or, where not permitted, licensed under Creative Commons CC0.
+-- To the extent possible under law, KyrosKrane Sylvanblade has waived all copyright and related or neighboring rights to BiggerBagChecker.lua.
+
+
+--#########################################
+--# Bail out on WoW Classic
+--#########################################
+
+-- Mechagon doesn't exist on WoW Classic, so if a user runs this on Classic, just return at once.
+local IsClassic = select(4, GetBuildInfo()) < 20000
+if IsClassic then return end
+
+
+--#########################################
+--# Main code
+--#########################################
+
 local select, tonumber = select, tonumber
 
 local L = {}
