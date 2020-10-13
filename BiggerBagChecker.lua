@@ -159,11 +159,13 @@ local color =
 	["green"] = "|cff1eff00",
 	["blue"] = "|cff0070dd",
 	["violet"] = "|cffa335ee",
-	["orange"] = "|cffff8000",
 	["beige"] = "|cffe6cc80",
 	["gold"] = "|cffffd200",
 	["yellow"] = "|cfffbfb1f",
-	["red"] = "|cffff0000"
+	["red"] = "|cffff0000",
+
+	-- Not used here
+	["orange"] = "|cffff8000",
 }
 
 local BiggerBagAchievementNum = 8728 -- the internal achievement ID for Bigger Bag
@@ -193,8 +195,7 @@ local function addItem(item, itemcolor, criteriaNum, percent)
 	-- So just in case, do some sanity checks on the passed in parameters, and just exit if they're invalid. This prevents a nasty in game error.
 	if not item or not itemcolor or not criteriaNum or not percent then return end
 
-	local Completed
-	_ , _ , Completed = GetAchievementCriteriaInfo(BiggerBagAchievementNum, criteriaNum);
+	local _ , _ , Completed = GetAchievementCriteriaInfo(BiggerBagAchievementNum, criteriaNum);
 
 	if not TimelessTooltipHeadlinePrinted then
 		headline()
