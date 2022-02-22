@@ -35,18 +35,6 @@ jobs:
 
       # once cloned, we just run the GitHub Action for the packager project
 
-      # package for the Classic version of the game
-      - name: Package and release for Vanilla Classic
-        uses: BigWigsMods/packager@v1
-        with:
-          args: -g classic
-
-      # package for Burning Crusade Classic
-      - name: Package and release for TBC Classic
-        uses: BigWigsMods/packager@v1
-        with:
-          args: -g bcc
-
       # package for the retail version of the game
       - name: Package and release for Retail
         uses: BigWigsMods/packager@v1
