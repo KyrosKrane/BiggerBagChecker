@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90200
 ## Title: BiggerBagChecker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
