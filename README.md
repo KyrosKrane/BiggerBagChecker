@@ -1,4 +1,4 @@
-# BiggerBagChecker Overview
+# Bigger Bag Checker Overview
 This is a World of Warcraft addon that lets you track your progress for the [Going To Need A Bigger Bag](https://www.wowhead.com/achievement=8728/going-to-need-a-bigger-bag) achievement.
 
 This is an update of Zeatar's addon [Timeless Loot](https://www.curseforge.com/wow/addons/timeless-loot), which he stopped updating in 2014.
