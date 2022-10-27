@@ -1,5 +1,5 @@
 # description of this workflow, can be anything you want
-name: Package and release
+name: Package alpha/beta versions
 
 # we need to let GitHub know _when_ we want to release, typically only when we create a new tag.
 # this will target only tags, and not all pushes to the master branch.
@@ -8,7 +8,8 @@ name: Package and release
 on:
   push:
     tags:
-      - '*-release*'
+      - '**'
+      - '!*-release*'
 
 # a workflow is built up as jobs, and within these jobs are steps
 jobs:
@@ -38,6 +39,9 @@ jobs:
 
       # once cloned, we just run the GitHub Action for the packager project
 
-      # package for the retail version of the game
-      - name: Package and release for Retail
+      # package for all versions of the game
+      - name: Package and upload test versions
         uses: BigWigsMods/packager@v2
+        with:
+          args: -w 0 # do not load alphas to WowInterface
+
