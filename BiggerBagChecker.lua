@@ -17,7 +17,7 @@ if IsClassic then return end
 --# Main code
 --#########################################
 
-local select, tonumber = select, tonumber
+local addonName, BBC = ...
 
 local L = {}
 
@@ -174,7 +174,7 @@ local TimelessTooltipHeadlinePrinted -- tells us if we started adding to a toolt
 
 ---------------------------------------------
 
-function updateLocale(loc)
+function BBC.updateLocale(loc)
 	for k,v in pairs(loc) do
 		if v == true then
 			L[k] = k

@@ -1,6 +1,7 @@
+local addonName, BBC = ...
 
 if GetLocale() == "ruRU" then
-	updateLocale(
+	BBC.updateLocale(
 {
 	["Going To Need A Bigger Bag"] = "А сумка могла бы быть и побольше",
 	--

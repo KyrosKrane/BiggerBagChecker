@@ -1,6 +1,7 @@
+local addonName, BBC = ...
 
 if GetLocale() == "zhTW" then
-	updateLocale(
+	BBC.updateLocale(
 {
 	["Going To Need A Bigger Bag"] = "需要更大的袋子",
 	--

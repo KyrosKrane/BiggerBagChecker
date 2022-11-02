@@ -1,6 +1,7 @@
+local addonName, BBC = ...
 
 
-updateLocale(
+BBC.updateLocale(
 {
 	["Going To Need A Bigger Bag"] = true,
 	--

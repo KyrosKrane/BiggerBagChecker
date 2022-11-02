@@ -1,7 +1,8 @@
 -- Credit to user xy985426 from CurseForge for this translation.
+local addonName, BBC = ...
 
 if GetLocale() == "zhCN" then
-	updateLocale(
+	BBC.updateLocale(
 {
 	["Going To Need A Bigger Bag"] = "需要一个大背包",
 	--

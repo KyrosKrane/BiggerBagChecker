@@ -1,6 +1,7 @@
+local addonName, BBC = ...
 
 if GetLocale() == "deDE" then
-	updateLocale(
+	BBC.updateLocale(
 {
 	["Going To Need A Bigger Bag"] = "Schatz, ich brauche eine neue Tasche",
 	--
