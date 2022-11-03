@@ -19,8 +19,6 @@ if IsClassic then return end
 
 local addonName, BBC = ...
 
-local L = {}
-
 local criteria =
 {
 	["Cursed Swabby Helmet"] = 1,
@@ -172,7 +170,12 @@ local BiggerBagAchievementNum = 8728 -- the internal achievement ID for Bigger B
 
 local TimelessTooltipHeadlinePrinted -- tells us if we started adding to a tooltip
 
----------------------------------------------
+
+--#########################################
+--# Locale handling
+--#########################################
+
+local L = {}
 
 function BBC.updateLocale(loc)
 	for k,v in pairs(loc) do
@@ -184,7 +187,13 @@ function BBC.updateLocale(loc)
 	end
 end
 
+
+--#########################################
+--# Tooltip writing
+--#########################################
+
 local function headline()
+
 	GameTooltip:AddLine(color["gold"]..L["Going To Need A Bigger Bag"],1,1,1)
 	TimelessTooltipHeadlinePrinted = true
 end
