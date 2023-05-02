@@ -1,4 +1,4 @@
-## Interface: 100007
+## Interface: 101000
 ## Title: BiggerBagChecker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
