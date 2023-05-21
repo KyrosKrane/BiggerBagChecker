@@ -1,8 +1,9 @@
 ## Interface: 101000
-## Title: BiggerBagChecker
+## Title: Bigger Bag Checker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
 ## Notes: Tracks your progress for the "Going to Need a Bigger Bag" achievement.
+## IconTexture: Interface\Icons\Inv_misc_bag_16
 
 ## X-Curse-Project-ID: 292022
 ## X-WoWI-ID: 24595
