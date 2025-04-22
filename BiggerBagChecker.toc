@@ -1,7 +1,7 @@
 # File revision: @file-abbreviated-hash@
 # File last updated: @file-date-iso@
 
-## Interface: 110100
+## Interface: @toc-version-retail@
 ## Title: Bigger Bag Checker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
