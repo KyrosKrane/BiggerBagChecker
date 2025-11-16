@@ -204,6 +204,9 @@ local function addItem(item, itemcolor, criteriaNum, percent)
 	-- So just in case, do some sanity checks on the passed in parameters, and just exit if they're invalid. This prevents a nasty in game error.
 	if not item or not itemcolor or not criteriaNum or not percent then return end
 
+	-- also make sure the game isn't doing something secret squirrely with the values
+	if issecretvalue(item) or issecretvalue(itemcolor) or issecretvalue(criteriaNum) or issecretvalue(percent) then return end
+
 	local _ , _ , Completed = GetAchievementCriteriaInfo(BiggerBagAchievementNum, criteriaNum);
 
 	if not TimelessTooltipHeadlinePrinted then
@@ -237,7 +240,7 @@ local function checkObjects(...)
 		if region and region:GetObjectType() == "FontString" then
 			local text = region:GetText()
 
-			if text ~= nil then
+			if not issecretvalue(text) and text ~= nil then
 
 				-- determine what object was found.
 				if text == L["Crane Nest"] or text == L["Eerie Crystal"] or text == L["Sunken Treasure"] or text == L["Timeless Chest"] or text == L["Conspicuously Empty Shell"] then
@@ -297,7 +300,15 @@ f:SetScript("OnEvent", function()
 	TimelessTooltipHeadlinePrinted = false
 
 	if GameTooltip:IsVisible() and not UnitIsPlayer("mouseover") and not C_PetBattles.IsInBattle() then
-		local _, _, _, _, _, npcIDStr, _ = strsplit("-", UnitGUID("mouseover") or "")
+		local mouseover_guid = UnitGUID("mouseover")
+		
+		-- Rarely, the function fails to return a value. No point in continuing if so.
+		if not mouseover_guid then return end
+
+		-- Also bail out if the returned value is somehow secret.
+		if issecretvalue(mouseover_guid) then return end
+
+		local _, _, _, _, _, npcIDStr, _ = strsplit("-", mouseover_guid)
 		local npcID = tonumber(npcIDStr)
 		if npcID == mob["Brilliant Windfeather"] then
 			addItem(L["Windfeather Plume"], color["green"], criteria["Windfeather Plume"], 8 ) -- 8%
