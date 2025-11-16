@@ -5,12 +5,16 @@
 
 
 --#########################################
---# Bail out on WoW Classic
+--# Version compatibility checks
 --#########################################
 
--- Timeless Isle doesn't exist on WoW Classic, so if a user runs this on Classic, just return at once.
+-- Timeless Isle doesn't exist on WoW Classic, so if a user runs this on Classic, just exit at once.
 local IsClassic = select(4, GetBuildInfo()) < 50000
 if IsClassic then return end
+
+-- Midnight introduces the concept of secret values. Prior versions don't have this or care about secrets.
+-- So, add a stub to handle old builds
+local issecretvalue = _G[issecretvalue] or function (...) return false end
 
 
 --#########################################
