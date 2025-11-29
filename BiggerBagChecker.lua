@@ -14,7 +14,7 @@ if IsClassic then return end
 
 -- Midnight introduces the concept of secret values. Prior versions don't have this or care about secrets.
 -- So, add a stub to handle old builds
-local issecretvalue = _G[issecretvalue] or function (...) return false end
+local issecretvalue = issecretvalue or function (...) return false end
 
 
 --#########################################
