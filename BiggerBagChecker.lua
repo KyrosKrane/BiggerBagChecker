@@ -298,161 +298,164 @@ end)
 
 ---------------------------------------------
 
+local function CheckMouseoverUnit()
+	-- Bail out for invalid scenarios
+	if not GameTooltip:IsVisible() or UnitIsPlayer("mouseover") or C_PetBattles.IsInBattle() then return end
+
+	TimelessTooltipHeadlinePrinted = false
+	local mouseover_guid = UnitGUID("mouseover")
+
+	-- Rarely, the function fails to return a value. No point in continuing if so.
+	if not mouseover_guid then return end
+
+	-- Also bail out if the returned value is somehow secret.
+	if issecretvalue(mouseover_guid) then return end
+
+	local _, _, _, _, _, npcIDStr, _ = strsplit("-", mouseover_guid)
+	local npcID = tonumber(npcIDStr)
+
+	if npcID == mob["Brilliant Windfeather"] then
+		addItem(L["Windfeather Plume"], color["green"], criteria["Windfeather Plume"], 8 ) -- 8%
+	elseif npcID == mob["Emerald Gander"] then
+		addItem(L["Windfeather Plume"], color["green"], criteria["Windfeather Plume"], 50 ) -- 50%
+	elseif npcID == mob["Blackhoof"] then
+		addItem(L["Battle Horn"], color["blue"], criteria["Battle Horn"], 20 ) -- 20%
+	elseif npcID == mob["Ordon Candlekeeper"] then
+		addItem(L["Battle Horn"], color["blue"], criteria["Battle Horn"], 0.5 ) -- 0.5%
+	elseif npcID == mob["Sulik'shor"] then
+		addItem(L["Crystal of Insanity"], color["blue"], criteria["Crystal of Insanity"], 10) -- 10%
+	elseif npcID == mob["Sele'na"] then
+		-- Note that Overgrown Lilypad (the item) was changed to Wilted Lilypad when WoD launched. The criteria still states Overgrown Lilypad though.
+		addItem(L["Wilted Lilypad"], color["gray"], criteria["Overgrown Lilypad"], 20) -- 20%
+	-- As per a GM note, the Wilited Lilypad only drops from Sele'na.
+	--elseif npcID == mob["Gulp Frog"] then
+	--	addItem(L["Wilted Lilypad"], color["gray"], criteria["Overgrown Lilypad"], 1.2) -- 1.2%
+	elseif npcID == mob["Nessos the Oracle"] then
+		addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 26 ) -- 26%
+	elseif npcID == mob["Great Turtle Furyshell"] then
+		addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.7 ) -- 1.7%
+	elseif npcID == mob["Chelon"] then
+		addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.3 ) -- 1.3%
+	elseif npcID == mob["Korda Torros"] then
+		addItem(L["Forager's Gloves"], color["blue"], criteria["Forager's Gloves"], 10 ) -- 10%
+	elseif npcID == mob["Burning Berserker"] then
+		addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 0.9 )	-- 0.9%
+		addItem(L["Forager's Gloves"], color["blue"], criteria["Forager's Gloves"], 0.8 ) -- 0.8%
+	elseif npcID == mob["Ashleaf Sprite"] then
+		addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 1 )	-- 1%
+		addItem(L["Faintly-Glowing Herb"], color["green"], criteria["Faintly-Glowing Herb"], 10 ) -- 10%
+	elseif npcID == mob["Krol the Blade"] then
+		addItem(L["Elixir of Ancient Knowledge"], color["blue"], criteria["Elixir of Ancient Knowledge"], 10 ) -- 10%
+	elseif npcID == mob["Archiereus of Flame (Summoned)"] or npcID == mob["Archiereus of Flame (Sanctuary)"] then
+		addItem(L["Elixir of Ancient Knowledge"], color["blue"], criteria["Elixir of Ancient Knowledge"], 2 ) -- 2%
+	elseif npcID == mob["High Priest of Ordos"] then
+		addItem(L["Ash-Covered Horn"], color["blue"], criteria["Ash-Covered Horn"], 1.1)	-- 1.1%
+	elseif npcID == mob["Watcher Osu"] then
+		addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 2 )	--2%
+		addItem(L["Ashen Stone"], color["blue"], criteria["Ashen Stone"], 0.9 )	-- 0.9%
+	elseif npcID == mob["Champion of the Black Flame"] then
+		addItem(L["Blackflame Daggers"], color["blue"], criteria["Blackflame Daggers"], 1.1 ) -- 1.1%
+		addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 6.0 )	-- 6%
+	elseif npcID == mob["Blazebound Chanter"] then
+		addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 0.8 ) -- 0.8%
+		addItem(L["Blizzard Stone"], color["blue"], criteria["Blizzard Stone"], 0.4 ) --0.4%
+	elseif npcID == mob["Leafmender"] then
+		addItem(L["Ashleaf Spriteling"], color["blue"], criteria["Ashleaf Spriteling"], 3)
+		addItem(L["Faintly-Glowing Herb"], color["green"], criteria["Faintly-Glowing Herb"], 50)
+	elseif npcID == mob["Scary Sprite"] or npcID == mob["Nice Sprite"] then
+		addItem(L["Dandelion Frolicker"], color["blue"], criteria["Dandelion Frolicker"], 0.1)
+	elseif npcID == mob["Molten Guardian"] then
+		addItem(L["Cauterizing Core"], color["blue"], criteria["Cauterizing Core"], 1.8 ) -- 1.8%
+	elseif npcID == mob["Eternal Kilnmaster"] then
+		addItem(L["Eternal Kiln"], color["blue"], criteria["Eternal Kiln"], 0.4)
+		addItem(L["Blazing Sigil of Ordos"], color["green"], criteria["Blazing Sigil of Ordos"], 1.7)
+	elseif npcID == mob["Spelurk"] then
+		addItem(L["Cursed Talisman"], color["green"], criteria["Cursed Talisman"], 0.9)
+	elseif npcID == mob["Zhu-Gon the Sour"] then
+		addItem(L["Skunky Alemental"], color["blue"], criteria["Skunky Alemental"], 3)
+	elseif npcID == mob["Garnia"] then
+		addItem(L["Ruby Droplet"], color["blue"], criteria["Ruby Droplet"], 3)
+	elseif npcID == mob["Bufo"] then
+		addItem(L["Gulp Froglet"], color["blue"], criteria["Gulp Froglet"], 3)
+	elseif npcID == mob["Ordon Oathguard"] then
+		addItem(L["Warped Warning Sign"], color["green"], criteria["Warped Warning Sign"], 5)
+	elseif npcID == mob["Jakur of Ordon"] then
+		addItem(L["Warning Sign"], color["blue"], criteria["Warning Sign"], 1)
+	elseif npcID == mob["Ordon Fire-Watcher"] then
+		addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 0.9)
+		addItem(L["Blazing Sigil of Ordos"], color["green"], criteria["Blazing Sigil of Ordos"], 1.3 ) -- 1.3%
+	elseif npcID == mob["Rattleskew"] then
+		addItem(L["Captain Zvezdan's Lost Leg"], color["violet"], criteria["Captain Zvezdan's Lost Leg"], 3.4)
+	elseif npcID == mob["Spectral Windwalker"] then
+		addItem(L["Bubbling Pi'jiu Brew"], color["green"], criteria["Bubbling Pi'jiu Brew"], 7.7 ) -- 7.66%
+	elseif npcID == mob["Urdur the Cauterizer"] then
+		addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 2)
+		addItem(L["Sunset Stone"], color["blue"], criteria["Sunset Stone"], 3.1)
+	elseif npcID == mob["Spectral Mistweaver"] then
+		addItem(L["Misty Pi'jiu Brew"], color["green"], criteria["Misty Pi'jiu Brew"], 7.8)
+	elseif npcID == mob["Spectral Brewmaster"] then
+		addItem(L["Thick Pi'jiu Brew"], color["green"], criteria["Thick Pi'jiu Brew"], 7.7)
+	elseif npcID == mob["Damp Shambler"] then
+		addItem(L["Strange Glowing Mushroom"], color["green"], criteria["Strange Glowing Mushroom"], 47)
+	elseif npcID == mob["Gu'chi the Swarmbringer"] then
+		addItem(L["Swarmling of Gu'chi"], color["blue"], criteria["Swarmling of Gu'chi"], 3)
+		addItem(L["Sticky Silkworm Goo"], color["green"], criteria["Sticky Silkworm Goo"], 47)
+	elseif npcID == mob["Spotted Swarmer"] then
+		addItem(L["Sticky Silkworm Goo"], color["green"], criteria["Sticky Silkworm Goo"], 1.9)
+	elseif npcID == mob["Cranegnasher"] then
+		addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 1.9)
+	elseif npcID == mob["Tsavo'ka"] then
+		addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 1.9)
+	elseif npcID == mob["Primal Stalker"] then
+		addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 0.9)
+	elseif npcID == mob["Death Adder"] then
+		addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2)
+	elseif npcID == mob["Imperial Python"] then
+		addItem(L["Death Adder Hatchling"], color["green"], criteria["Death Adder Hatchling"], 3)
+		addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2)
+	elseif npcID == mob["Huolon"] then
+		addItem(L["Reins of the Thundering Onyx Cloud Serpent"], color["violet"], criteria["Reins of the Thundering Onyx Cloud Serpent"], 1)
+		addItem(L["Quivering Firestorm Egg"], color["white"], criteria["Quivering Firestorm Egg"], 23)
+	elseif npcID == mob["Crimsonscale Firestorm"] then
+		addItem(L["Quivering Firestorm Egg"], color["white"], criteria["Quivering Firestorm Egg"], 7)
+	elseif npcID == mob["Cinderfall"] then
+		addItem(L["Falling Flame"], color["blue"], criteria["Falling Flame"], 2.1)
+		addItem(L["Glowing Blue Ash"], color["blue"], criteria["Glowing Blue Ash"], 1.9)
+	elseif npcID == mob["Jademist Dancer"] then
+		addItem(L["Jademist Dancer"], color["blue"], criteria["Jademist Dancer"], 0.5)
+		addItem(L["Condensed Jademist"], color["green"], criteria["Condensed Jademist"], 8)
+	elseif npcID == mob["Karkanos"] then
+		addItem(L["Giant Purse of Timeless Coins"], color["white"], criteria["Giant Purse of Timeless Coins"], 23.8)
+	elseif npcID == mob["Golganarr"] then
+		addItem(L["Odd Polished Stone"], color["blue"], criteria["Odd Polished Stone"], 23)
+		addItem(L["Glinting Pile of Stone"], color["blue"], criteria["Glinting Pile of Stone"], 2)
+	elseif npcID == mob["Eroded Cliffdweller"] then
+		addItem(L["Glinting Pile of Stone"], color["blue"], criteria["Glinting Pile of Stone"], 0.9)
+		addItem(L["Odd Polished Stone"], color["blue"], criteria["Odd Polished Stone"], 0.4)
+	elseif npcID == mob["Foreboding Flame"] then
+		addItem(L["Glowing Blue Ash"], color["blue"], criteria["Glowing Blue Ash"], 0.9)
+		addItem(L["Ominous Flame"], color["blue"], criteria["Ominous Flame"], 0.5)
+	elseif npcID == mob["Spirit of Jadefire"] then
+		addItem(L["Glowing Green Ash"], color["blue"], criteria["Glowing Green Ash"], 2.1)
+		addItem(L["Jadefire Spirit"], color["blue"], criteria["Jadefire Spirit"], 2.1)
+	elseif npcID == mob["Rock Moss"] then
+		addItem(L["Golden Moss"], color["blue"], criteria["Golden Moss"] , 3)
+		addItem(L["Strange Glowing Mushroom"], color["green"], criteria["Strange Glowing Mushroom"], 51)
+	elseif npcID == mob["Dread Ship Vazuvius"] then
+		addItem(L["Rime of the Time-Lost Mariner"], color["blue"], criteria["Rime of the Time-Lost Mariner"], 14)
+	elseif npcID == mob["Monstrous Spineclaw"] then
+		addItem(L["Spineclaw Crab"], color["blue"], criteria["Spineclaw Crab"], 1.8)
+		addItem(L["Scuttler's Shell"], color["green"], criteria["Scuttler's Shell"], 45)
+	elseif npcID == mob["Ancient Spineclaw"] then
+		addItem(L["Scuttler's Shell"], color["green"], criteria["Scuttler's Shell"], 10)
+	elseif npcID == mob["Flintlord Gairan"] then
+		addItem(L["Ordon Death Chime"], color["violet"], criteria["Ordon Death Chime"], 2.5)
+	elseif npcID == mob["Zesqua"] then
+		addItem(L["Rain Stone"], color["blue"], criteria["Rain Stone"], 1)
+	end
+end -- CheckMouseoverUnit()
+
 
 local f = CreateFrame("frame")
 f:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
-f:SetScript("OnEvent", function()
-	TimelessTooltipHeadlinePrinted = false
-
-	if GameTooltip:IsVisible() and not UnitIsPlayer("mouseover") and not C_PetBattles.IsInBattle() then
-		local mouseover_guid = UnitGUID("mouseover")
-
-		-- Rarely, the function fails to return a value. No point in continuing if so.
-		if not mouseover_guid then return end
-
-		-- Also bail out if the returned value is somehow secret.
-		if issecretvalue(mouseover_guid) then return end
-
-		local _, _, _, _, _, npcIDStr, _ = strsplit("-", mouseover_guid)
-		local npcID = tonumber(npcIDStr)
-		if npcID == mob["Brilliant Windfeather"] then
-			addItem(L["Windfeather Plume"], color["green"], criteria["Windfeather Plume"], 8 ) -- 8%
-		elseif npcID == mob["Emerald Gander"] then
-			addItem(L["Windfeather Plume"], color["green"], criteria["Windfeather Plume"], 50 ) -- 50%
-		elseif npcID == mob["Blackhoof"] then
-			addItem(L["Battle Horn"], color["blue"], criteria["Battle Horn"], 20 ) -- 20%
-		elseif npcID == mob["Ordon Candlekeeper"] then
-			addItem(L["Battle Horn"], color["blue"], criteria["Battle Horn"], 0.5 ) -- 0.5%
-		elseif npcID == mob["Sulik'shor"] then
-			addItem(L["Crystal of Insanity"], color["blue"], criteria["Crystal of Insanity"], 10) -- 10%
-		elseif npcID == mob["Sele'na"] then
-			-- Note that Overgrown Lilypad (the item) was changed to Wilted Lilypad when WoD launched. The criteria still states Overgrown Lilypad though.
-			addItem(L["Wilted Lilypad"], color["gray"], criteria["Overgrown Lilypad"], 20) -- 20%
-		-- As per a GM note, the Wilited Lilypad only drops from Sele'na.
-		--elseif npcID == mob["Gulp Frog"] then
-		--	addItem(L["Wilted Lilypad"], color["gray"], criteria["Overgrown Lilypad"], 1.2) -- 1.2%
-		elseif npcID == mob["Nessos the Oracle"] then
-			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 26 ) -- 26%
-		elseif npcID == mob["Great Turtle Furyshell"] then
-			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.7 ) -- 1.7%
-		elseif npcID == mob["Chelon"] then
-			addItem(L["Hardened Shell"], color["blue"], criteria["Hardened Shell"], 1.3 ) -- 1.3%
-		elseif npcID == mob["Korda Torros"] then
-			addItem(L["Forager's Gloves"], color["blue"], criteria["Forager's Gloves"], 10 ) -- 10%
-		elseif npcID == mob["Burning Berserker"] then
-			addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 0.9 )	-- 0.9%
-			addItem(L["Forager's Gloves"], color["blue"], criteria["Forager's Gloves"], 0.8 ) -- 0.8%
-		elseif npcID == mob["Ashleaf Sprite"] then
-			addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 1 )	-- 1%
-			addItem(L["Faintly-Glowing Herb"], color["green"], criteria["Faintly-Glowing Herb"], 10 ) -- 10%
-		elseif npcID == mob["Krol the Blade"] then
-			addItem(L["Elixir of Ancient Knowledge"], color["blue"], criteria["Elixir of Ancient Knowledge"], 10 ) -- 10%
-		elseif npcID == mob["Archiereus of Flame (Summoned)"] or npcID == mob["Archiereus of Flame (Sanctuary)"] then
-			addItem(L["Elixir of Ancient Knowledge"], color["blue"], criteria["Elixir of Ancient Knowledge"], 2 ) -- 2%
-		elseif npcID == mob["High Priest of Ordos"] then
-			addItem(L["Ash-Covered Horn"], color["blue"], criteria["Ash-Covered Horn"], 1.1)	-- 1.1%
-		elseif npcID == mob["Watcher Osu"] then
-			addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 2 )	--2%
-			addItem(L["Ashen Stone"], color["blue"], criteria["Ashen Stone"], 0.9 )	-- 0.9%
-		elseif npcID == mob["Champion of the Black Flame"] then
-			addItem(L["Blackflame Daggers"], color["blue"], criteria["Blackflame Daggers"], 1.1 ) -- 1.1%
-			addItem(L["Big Bag of Herbs"], color["blue"], criteria["Big Bag of Herbs"], 6.0 )	-- 6%
-		elseif npcID == mob["Blazebound Chanter"] then
-			addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 0.8 ) -- 0.8%
-			addItem(L["Blizzard Stone"], color["blue"], criteria["Blizzard Stone"], 0.4 ) --0.4%
-		elseif npcID == mob["Leafmender"] then
-			addItem(L["Ashleaf Spriteling"], color["blue"], criteria["Ashleaf Spriteling"], 3)
-			addItem(L["Faintly-Glowing Herb"], color["green"], criteria["Faintly-Glowing Herb"], 50)
-		elseif npcID == mob["Scary Sprite"] or npcID == mob["Nice Sprite"] then
-			addItem(L["Dandelion Frolicker"], color["blue"], criteria["Dandelion Frolicker"], 0.1)
-		elseif npcID == mob["Molten Guardian"] then
-			addItem(L["Cauterizing Core"], color["blue"], criteria["Cauterizing Core"], 1.8 ) -- 1.8%
-		elseif npcID == mob["Eternal Kilnmaster"] then
-			addItem(L["Eternal Kiln"], color["blue"], criteria["Eternal Kiln"], 0.4)
-			addItem(L["Blazing Sigil of Ordos"], color["green"], criteria["Blazing Sigil of Ordos"], 1.7)
-		elseif npcID == mob["Spelurk"] then
-			addItem(L["Cursed Talisman"], color["green"], criteria["Cursed Talisman"], 0.9)
-		elseif npcID == mob["Zhu-Gon the Sour"] then
-			addItem(L["Skunky Alemental"], color["blue"], criteria["Skunky Alemental"], 3)
-		elseif npcID == mob["Garnia"] then
-			addItem(L["Ruby Droplet"], color["blue"], criteria["Ruby Droplet"], 3)
-		elseif npcID == mob["Bufo"] then
-			addItem(L["Gulp Froglet"], color["blue"], criteria["Gulp Froglet"], 3)
-		elseif npcID == mob["Ordon Oathguard"] then
-			addItem(L["Warped Warning Sign"], color["green"], criteria["Warped Warning Sign"], 5)
-		elseif npcID == mob["Jakur of Ordon"] then
-			addItem(L["Warning Sign"], color["blue"], criteria["Warning Sign"], 1)
-		elseif npcID == mob["Ordon Fire-Watcher"] then
-			addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 0.9)
-			addItem(L["Blazing Sigil of Ordos"], color["green"], criteria["Blazing Sigil of Ordos"], 1.3 ) -- 1.3%
-		elseif npcID == mob["Rattleskew"] then
-			addItem(L["Captain Zvezdan's Lost Leg"], color["violet"], criteria["Captain Zvezdan's Lost Leg"], 3.4)
-		elseif npcID == mob["Spectral Windwalker"] then
-			addItem(L["Bubbling Pi'jiu Brew"], color["green"], criteria["Bubbling Pi'jiu Brew"], 7.7 ) -- 7.66%
-		elseif npcID == mob["Urdur the Cauterizer"] then
-			addItem(L["Ordon Ceremonial Robes"], color["blue"], criteria["Ordon Ceremonial Robes"], 2)
-			addItem(L["Sunset Stone"], color["blue"], criteria["Sunset Stone"], 3.1)
-		elseif npcID == mob["Spectral Mistweaver"] then
-			addItem(L["Misty Pi'jiu Brew"], color["green"], criteria["Misty Pi'jiu Brew"], 7.8)
-		elseif npcID == mob["Spectral Brewmaster"] then
-			addItem(L["Thick Pi'jiu Brew"], color["green"], criteria["Thick Pi'jiu Brew"], 7.7)
-		elseif npcID == mob["Damp Shambler"] then
-			addItem(L["Strange Glowing Mushroom"], color["green"], criteria["Strange Glowing Mushroom"], 47)
-		elseif npcID == mob["Gu'chi the Swarmbringer"] then
-			addItem(L["Swarmling of Gu'chi"], color["blue"], criteria["Swarmling of Gu'chi"], 3)
-			addItem(L["Sticky Silkworm Goo"], color["green"], criteria["Sticky Silkworm Goo"], 47)
-		elseif npcID == mob["Spotted Swarmer"] then
-			addItem(L["Sticky Silkworm Goo"], color["green"], criteria["Sticky Silkworm Goo"], 1.9)
-		elseif npcID == mob["Cranegnasher"] then
-			addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 1.9)
-		elseif npcID == mob["Tsavo'ka"] then
-			addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 1.9)
-		elseif npcID == mob["Primal Stalker"] then
-			addItem(L["Pristine Stalker Hide"], color["blue"], criteria["Pristine Stalker Hide"], 0.9)
-		elseif npcID == mob["Death Adder"] then
-			addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2)
-		elseif npcID == mob["Imperial Python"] then
-			addItem(L["Death Adder Hatchling"], color["green"], criteria["Death Adder Hatchling"], 3)
-			addItem(L["Partially-Digested Meal"], color["blue"], criteria["Partially-Digested Meal"], 2)
-		elseif npcID == mob["Huolon"] then
-			addItem(L["Reins of the Thundering Onyx Cloud Serpent"], color["violet"], criteria["Reins of the Thundering Onyx Cloud Serpent"], 1)
-			addItem(L["Quivering Firestorm Egg"], color["white"], criteria["Quivering Firestorm Egg"], 23)
-		elseif npcID == mob["Crimsonscale Firestorm"] then
-			addItem(L["Quivering Firestorm Egg"], color["white"], criteria["Quivering Firestorm Egg"], 7)
-		elseif npcID == mob["Cinderfall"] then
-			addItem(L["Falling Flame"], color["blue"], criteria["Falling Flame"], 2.1)
-			addItem(L["Glowing Blue Ash"], color["blue"], criteria["Glowing Blue Ash"], 1.9)
-		elseif npcID == mob["Jademist Dancer"] then
-			addItem(L["Jademist Dancer"], color["blue"], criteria["Jademist Dancer"], 0.5)
-			addItem(L["Condensed Jademist"], color["green"], criteria["Condensed Jademist"], 8)
-		elseif npcID == mob["Karkanos"] then
-			addItem(L["Giant Purse of Timeless Coins"], color["white"], criteria["Giant Purse of Timeless Coins"], 23.8)
-		elseif npcID == mob["Golganarr"] then
-			addItem(L["Odd Polished Stone"], color["blue"], criteria["Odd Polished Stone"], 23)
-			addItem(L["Glinting Pile of Stone"], color["blue"], criteria["Glinting Pile of Stone"], 2)
-		elseif npcID == mob["Eroded Cliffdweller"] then
-			addItem(L["Glinting Pile of Stone"], color["blue"], criteria["Glinting Pile of Stone"], 0.9)
-			addItem(L["Odd Polished Stone"], color["blue"], criteria["Odd Polished Stone"], 0.4)
-		elseif npcID == mob["Foreboding Flame"] then
-			addItem(L["Glowing Blue Ash"], color["blue"], criteria["Glowing Blue Ash"], 0.9)
-			addItem(L["Ominous Flame"], color["blue"], criteria["Ominous Flame"], 0.5)
-		elseif npcID == mob["Spirit of Jadefire"] then
-			addItem(L["Glowing Green Ash"], color["blue"], criteria["Glowing Green Ash"], 2.1)
-			addItem(L["Jadefire Spirit"], color["blue"], criteria["Jadefire Spirit"], 2.1)
-		elseif npcID == mob["Rock Moss"] then
-			addItem(L["Golden Moss"], color["blue"], criteria["Golden Moss"] , 3)
-			addItem(L["Strange Glowing Mushroom"], color["green"], criteria["Strange Glowing Mushroom"], 51)
-		elseif npcID == mob["Dread Ship Vazuvius"] then
-			addItem(L["Rime of the Time-Lost Mariner"], color["blue"], criteria["Rime of the Time-Lost Mariner"], 14)
-		elseif npcID == mob["Monstrous Spineclaw"] then
-			addItem(L["Spineclaw Crab"], color["blue"], criteria["Spineclaw Crab"], 1.8)
-			addItem(L["Scuttler's Shell"], color["green"], criteria["Scuttler's Shell"], 45)
-		elseif npcID == mob["Ancient Spineclaw"] then
-			addItem(L["Scuttler's Shell"], color["green"], criteria["Scuttler's Shell"], 10)
-		elseif npcID == mob["Flintlord Gairan"] then
-			addItem(L["Ordon Death Chime"], color["violet"], criteria["Ordon Death Chime"], 2.5)
-		elseif npcID == mob["Zesqua"] then
-			addItem(L["Rain Stone"], color["blue"], criteria["Rain Stone"], 1)
-		end
-	end
-end)
+f:SetScript("OnEvent", CheckMouseoverUnit)
