@@ -8,8 +8,8 @@ name: Package alpha/beta versions
 on:
   push:
     tags:
-      - '**'
-      - '!*-release*'
+      - '*-alpha*'
+      - '*-beta*'
 
 # a workflow is built up as jobs, and within these jobs are steps
 jobs:

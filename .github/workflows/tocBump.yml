@@ -1,0 +1,39 @@
+# Adapted with permission from Numynum's version here:
+# https://github.com/NumyAddon/TalentTreeTweaks/blob/master/.github/workflows/tocBump.yml
+
+name: Update TOC file
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Commit message'
+        required: false
+        default: 'Update TOC'
+
+jobs:
+  bump-toc:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get next version
+        uses: reecetech/version-increment@2024.10.1
+        id: version
+        with:
+          scheme: semver
+          increment: patch
+          tag_prefix: v
+
+      - name: Log the version
+        run: echo "::notice Version is ${{ steps.version.outputs.v-version }}"
+
+      - name: Create & push empty commit with tag
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git tag -a "${{ steps.version.outputs.v-version }}" -m "${{ steps.version.outputs.v-version }}"
+          git commit --allow-empty -m "${{ github.event.inputs.message }}"
+          git push --tags
+
