@@ -1,12 +1,12 @@
-# File revision: @file-abbreviated-hash@
-# File last updated: @file-date-iso@
-
 ## Interface: @toc-version-retail@
 ## Title: Bigger Bag Checker
 ## Version: @project-version@
 ## Author: KyrosKrane Sylvanblade
 ## Notes: Tracks your progress for the "Going to Need a Bigger Bag" achievement.
 ## IconTexture: Interface\Icons\Inv_misc_bag_16
+
+# File revision: @file-abbreviated-hash@
+# File last updated: @file-date-iso@
 
 ## X-Curse-Project-ID: 292022
 ## X-WoWI-ID: 24595
